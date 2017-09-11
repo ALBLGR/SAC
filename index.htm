@@ -54,14 +54,10 @@
   <div id='bar'> </div>
   
     <form method="GET" class="am-form" >
-    <?php 
-		if(isset($_POST['id'])){
-			echo "<img class='barcode' src='http://www.qinms.com/webapp/barcode/barc.ashx?t1=96&t2=40&t3=3&t4=3&cd={$_POST['id']}'>";
-		}
-	?>
+
 	<div class="am-form-group">
       <label for="id">学号:</label>
-      <input type="text" name="id" id='id' value="<?php echo $_POST['id']??''; ?>" class="am-form-field">
+      <input type="text" name="id" id='id' value="" class="am-form-field">
       </div>
       <br />
       <div class="am-cf">
