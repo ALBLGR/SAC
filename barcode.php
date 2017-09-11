@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>条形码生成</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="alternate icon" type="image/png" href="assets/i/favicon.png">
+  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+  <script type="text/javascript">
+  	
+		function GetQueryString(){
+		     var reg = new RegExp("(^|&)"+ "id" +"=([^&]*)(&|$)");
+		     var r = window.location.search.substr(1).match(reg);
+		     if(r!=null)return  unescape(r[2]); return "";
+		}
+
+		window.onload = function(){
+		 $('#bar')[0].innerHTML= "<img class='barcode' src='http://www.qinms.com/webapp/barcode/barc.ashx?t1=96&t2=40&t3=3&t4=3&cd=" + GetQueryString() + "'>";
+		};
+
+  </script>
+  <style>
+    .header {
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 200%;
+      color: #333;
+      margin-top: 30px;
+    }
+    .header p {
+      font-size: 14px;
+    }
+
+    .barcode{
+    	width:100%;	
+    }
+  </style>
+  <script src="/assets/js/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+<div class="header">
+    <h2>Student Ambassabor Service</h2>
+    <p>深圳中学学生大使中心</p>
+  <hr />
+</div>
+<div class="am-g">
+  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+  <div id='bar'> </div>
+  
+    <form method="GET" class="am-form" >
+    <?php 
+		if(isset($_POST['id'])){
+			echo "<img class='barcode' src='http://www.qinms.com/webapp/barcode/barc.ashx?t1=96&t2=40&t3=3&t4=3&cd={$_POST['id']}'>";
+		}
+	?>
+	<div class="am-form-group">
+      <label for="id">学号:</label>
+      <input type="text" name="id" id='id' value="<?php echo $_POST['id']??''; ?>" class="am-form-field">
+      </div>
+      <br />
+      <div class="am-cf">
+        <input type="submit" name="" value="提交" class="am-btn am-btn-primary am-btn-sm am-fl" ><br>
+      </div>
+    </form>
+    <hr>
+    <p>© 2017 Shenzhen Middle School Student Ambassador Service.</p>
+  </div>
+</div>
+</body>
+</html>
